@@ -16,7 +16,8 @@ jobs:
 
       - name: Read Release Notes from releaseNote.md
         id: read_release_notes
-        run: echo "notes=$(cat releaseNote.md)" >> $GITHUB_OUTPUT
+        run: echo "::set-output name=notes::$(cat releaseNote.md)"
+  
   
       - name: Create Release PAT
         id: create_release_pat
@@ -25,6 +26,6 @@ jobs:
             -H "Authorization: token ${{ secrets.PAT }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/releases \
-            -d '{"tag_name": "${{ github.ref }}", "name": "Release ${{ github.ref }}", "body": "$(cat $GITHUB_OUTPUT/notes)", "draft": false, "prerelease": false}}'
+            -d '{"tag_name": "${{ github.ref }}", "name": "Release ${{ github.ref }}", "body": "${{ steps.read_release_notes.outputs.notes }}", "draft": false, "prerelease": false}}'
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
