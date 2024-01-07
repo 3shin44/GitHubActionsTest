@@ -5,7 +5,7 @@ on:
     tags:
       - 'v*'  # This will trigger the workflow on tags starting with 'v'
     branches:
-      - Master
+      - master
 
 jobs:
   build:
