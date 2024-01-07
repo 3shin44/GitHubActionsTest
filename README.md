@@ -20,7 +20,7 @@
 
 2. YAML檔案流程雷點: 個人TOKEN設定
 
-  - 在自己帳號下先產生TOKEN (GitHub叫PAT, Personal Access Toekn), 壞掉時再查, 可能會改機制
+  - 在自己帳號下先產生TOKEN (GitHub叫PAT, Personal Access Token. 要是壞掉時再查, 驗證機制很常改)
 
   - 在專案資料夾下新增對應KEY名稱, 之後在YAML就可以使用
 
