@@ -16,7 +16,7 @@ jobs:
 
       - name: Read Release Notes from releaseNote.md
         id: read_release_notes
-        run: echo "::set-output name=notes::$(cat releaseNote.md)"
+        run: echo "notes=$(cat releaseNote.md)" >> $GITHUB_OUTPUT
   
       - name: Create Release PAT
         id: create_release_pat
