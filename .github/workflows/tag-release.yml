@@ -24,6 +24,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: ${{ steps.read_release_notes.outputs.notes }}
+          body: ${{ steps.read_release_notes.outputs.notes | base64decode }}
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
