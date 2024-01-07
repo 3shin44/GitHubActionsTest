@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - 'v*'  # This will trigger the workflow on tags starting with 'v'
-    branches:
-      - master
 
 jobs:
   build:
