@@ -13,5 +13,5 @@ jobs:
       - name: Zip Folder
         run: |
           cd ../ # I added this
-          rm -rf <repository_name>.zip
-          zip -r <repository_name>.zip <repository_name> -x ".git/*" ".github/*"
+          rm -rf GitHubActionsTest.zip
+          zip -r GitHubActionsTest.zip GitHubActionsTest -x ".git/*" ".github/*"
