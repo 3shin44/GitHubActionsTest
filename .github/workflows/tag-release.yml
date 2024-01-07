@@ -14,18 +14,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      # - name: Read Release Notes from releaseNote.md
-      #   id: read_release_notes
-      #   run: echo "::set-output name=notes::$(cat releaseNote.md)"
+      - name: Read Release Notes from releaseNote.md
+        id: read_release_notes
+        run: echo "::set-output name=notes::$(cat releaseNote.md)"
   
-  
-      - name: Create Release PAT
-        id: create_release_pat
-        run: |
-          curl -X POST \
-            -H "Authorization: token ${{ secrets.PAT }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/releases \
-            -d '{"tag_name": "${{ github.ref }}", "name": "Release ${{ github.ref }}", "body": "Release Content manually", "draft": false, "prerelease": false}}'
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: ${{ steps.read_release_notes.outputs.notes }}
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
