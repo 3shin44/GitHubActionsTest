@@ -2,8 +2,9 @@ name: Release on Tag
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - 'v*'  # This will trigger the workflow on tags starting with 'v'
+
 
 jobs:
   build:
