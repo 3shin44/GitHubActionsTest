@@ -1,0 +1,26 @@
+name: Release on Tag
+
+on:
+  push:
+    tags:
+      - 'v*'  # This will trigger the workflow on tags starting with 'v'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Read Release Notes from releaseNote.md
+      id: read_release_notes
+      run: echo "::set-output name=notes::$(cat releaseNote.md)"
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        body: ${{ steps.read_release_notes.outputs.notes }}
