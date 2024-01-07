@@ -1,0 +1,18 @@
+name: Build Zip Test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      steps:
+        - name: Zip Folder
+          run:
+            cd ../
+            rm -rf <repository_name>.zip
+            zip -r <repository_name>.zip <repository_name> -x ".git/*" ".github/*"
