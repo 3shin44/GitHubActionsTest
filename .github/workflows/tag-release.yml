@@ -17,8 +17,8 @@ jobs:
         id: read_release_notes
         run: echo "::set-output name=notes::$(cat releaseNote.md)"
   
-      - name: Create Release
-        id: create_release
+      - name: Create Release dev
+        id: create_release_dev
         uses: actions/create-release@v1
         with:
           tag_name: ${{ github.ref }}
