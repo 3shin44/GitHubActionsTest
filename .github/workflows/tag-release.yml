@@ -16,7 +16,7 @@ jobs:
 
       - name: Read Release Notes from releaseNote.md
         id: read_release_notes
-        run: echo "::set-output name=notes::$(cat releaseNote.md)"
+        run: echo "notes=$(cat releaseNote.md)" >> $GITHUB_OUTPUT
   
       - name: Create Release
         id: create_release
@@ -24,6 +24,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: ${{ steps.read_release_notes.outputs.notes }}
+          body: ${{ env.notes }}
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
