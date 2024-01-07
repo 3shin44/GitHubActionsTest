@@ -13,10 +13,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
-      - name: Read Release Notes from releaseNote.md
-        id: read_release_notes
-        run: echo "notes=$(cat releaseNote.md | base64)" >> $GITHUB_OUTPUT
   
       - name: Create Release
         id: create_release
@@ -24,6 +20,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: ${{ steps.read_release_notes.outputs.notes | base64decode }}
+          body_path: releaseNote.md
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
