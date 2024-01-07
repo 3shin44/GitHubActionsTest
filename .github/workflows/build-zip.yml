@@ -6,13 +6,12 @@ on:
       - master
 
 jobs:
-  build:
+  zip-n-push:
+    name: Zip and Push
     runs-on: ubuntu-latest
-
     steps:
-      steps:
-        - name: Zip Folder
-          run:
-            cd ../
-            rm -rf <repository_name>.zip
-            zip -r <repository_name>.zip <repository_name> -x ".git/*" ".github/*"
+      - name: Zip Folder
+        run: |
+          cd ../ # I added this
+          rm -rf <repository_name>.zip
+          zip -r <repository_name>.zip <repository_name> -x ".git/*" ".github/*"
