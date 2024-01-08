@@ -44,6 +44,10 @@
 
   - 語法最快還是看官方文件, 執行系統不同與改版差異, 輔助資訊不見得準確(ex. ChatGPT, Google)
 
+  - 補: 有本地端測試工具 by ChatGPT
+
+    GitHub CLI: `gh workflow run WORKFLOW_NAME`
+
 4. Marketplace
 
   - 若遇到的情境需要將MD文件轉換成PDF或HTML來交付, 如何找到適用的模組與測試又是另一個問題
